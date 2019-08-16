@@ -1,0 +1,27 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### login
+POST http://localhost:6666/login
+Content-Type: application/json
+
+{
+  "account": "golyu",
+  "password": "123456"
+}
+> {% client.global.set("ck", response.headers.valueOf("Set-Cookie")); %}
+
+### info
+GET http://localhost:6666/info
+Accept: application/json
+Cookie: {{ck}}
+
+> {% client.global.set("ck", response.headers.valueOf("Set-Cookie")); %}
+
+### xx
+session-key=MTU2NTc3NTIyMHxOd3dBTkU5RVYwcE9ORk5VUVZkRFZqSlRRMVV5VjBWVVZUVlZUa3hIU1VORk1qUmFTazFMVFZaSlRsQTFXRVpLTTFOV1JUVlVXRkU9fPes-MsoIozvIKswsywfClEKhxy5eBN904IqU5QzF9Em; Path=/; Expires=Wed, 21 Aug 2019 09:33:40 GMT; Max-Age=604800; HttpOnly; SameSite
